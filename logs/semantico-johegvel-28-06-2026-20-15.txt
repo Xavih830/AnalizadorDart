@@ -1,0 +1,13 @@
+==================================================
+         LOG DE ANÁLISIS SEMÁNTICO (DART)
+==================================================
+Desarrollador: Johan Veloz (johegvel)
+Fecha y Hora:  28/06/2026 20:15:00
+Archivo Origen: algoritmo3.dart
+--------------------------------------------------
+Errores semánticos: 2
+--------------------------------------------------
+
+--- DETALLE DE ERRORES SEMÁNTICOS ---
+- Linea 10: ERROR_IDENTIFICADOR: la variable 'r' no ha sido declarada en el ambito actual (linea 10) (Lexema: 'r')
+- Linea 23: ERROR_TIPO: no se puede asignar 'Set<dynamic>' a la variable 'vocalesSet' de tipo 'Set<String>' (linea 23) (Lexema: 'vocalesSet')
