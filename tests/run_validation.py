@@ -20,23 +20,27 @@ def ensure_dir(path):
     if not os.path.exists(path):
         os.makedirs(path)
 
-def generate_logs(algorithm_path, algorithm_name):
+def generate_logs(algorithm_path, algorithm_name, dev_username, dev_fullname, datetime_str=None):
     # Leer el código fuente
     with open(algorithm_path, 'r', encoding='utf-8') as f:
         code = f.read()
 
-    # Fecha y hora actual
-    now = datetime.datetime.now()
-    # Para el nombre del archivo: DD-MM-YYYY-HH-MM
-    # Nota: Windows no permite ':' en nombres de archivos, por lo que usamos '-'
-    datetime_str = now.strftime("%d-%m-%Y-%H-%M")
+    # Fecha y hora actual o override
+    if datetime_str:
+        try:
+            now = datetime.datetime.strptime(datetime_str, "%d-%m-%Y-%H-%M")
+        except ValueError:
+            now = datetime.datetime.now()
+    else:
+        now = datetime.datetime.now()
+        datetime_str = now.strftime("%d-%m-%Y-%H-%M")
     
     # Directorio de logs
     logs_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "logs")
     ensure_dir(logs_dir)
 
     # ----------------------------------------------------
-    # 1. Análisis Léxico (Xavier Camacho / Xavih830)
+    # 1. Análisis Léxico
     # ----------------------------------------------------
     lexer = get_lexer()
     lexer.input(code)
@@ -47,14 +51,14 @@ def generate_logs(algorithm_path, algorithm_name):
             break
         tokens.append(tok)
     
-    lex_log_name = f"lexico-Xavih830-{datetime_str}.txt"
+    lex_log_name = f"lexico-{dev_username}-{datetime_str}.txt"
     lex_log_path = os.path.join(logs_dir, lex_log_name)
     
     with open(lex_log_path, 'w', encoding='utf-8') as f:
         f.write("==================================================\n")
         f.write("          LOG DE ANÁLISIS LÉXICO (DART)\n")
         f.write("==================================================\n")
-        f.write(f"Desarrollador: Xavier Camacho (Xavih830)\n")
+        f.write(f"Desarrollador: {dev_fullname} ({dev_username})\n")
         f.write(f"Fecha y Hora:  {now.strftime('%d/%m/%Y %H:%M:%S')}\n")
         f.write(f"Archivo Origen: {algorithm_name}\n")
         f.write("--------------------------------------------------\n")
@@ -74,18 +78,18 @@ def generate_logs(algorithm_path, algorithm_name):
     print(f"[OK] Log lexico generado: logs/{lex_log_name}")
 
     # ----------------------------------------------------
-    # 2. Análisis Sintáctico (Manuel Matute / ManuelMatute)
+    # 2. Análisis Sintáctico
     # ----------------------------------------------------
     ast, syntactic_errors = parse(code)
     
-    sin_log_name = f"sintactico-ManuelMatute-{datetime_str}.txt"
+    sin_log_name = f"sintactico-{dev_username}-{datetime_str}.txt"
     sin_log_path = os.path.join(logs_dir, sin_log_name)
     
     with open(sin_log_path, 'w', encoding='utf-8') as f:
         f.write("==================================================\n")
         f.write("        LOG DE ANÁLISIS SINTÁCTICO (DART)\n")
         f.write("==================================================\n")
-        f.write(f"Desarrollador: Manuel Matute (ManuelMatute)\n")
+        f.write(f"Desarrollador: {dev_fullname} ({dev_username})\n")
         f.write(f"Fecha y Hora:  {now.strftime('%d/%m/%Y %H:%M:%S')}\n")
         f.write(f"Archivo Origen: {algorithm_name}\n")
         f.write("--------------------------------------------------\n")
@@ -106,21 +110,21 @@ def generate_logs(algorithm_path, algorithm_name):
     print(f"[OK] Log sintactico generado: logs/{sin_log_name}")
 
     # ----------------------------------------------------
-    # 3. Análisis Semántico (Johan Veloz / johegvel)
+    # 3. Análisis Semántico
     # ----------------------------------------------------
     semantic_errors = []
     if ast:
         analyzer = SemanticAnalyzer()
         semantic_errors = analyzer.analyze(ast)
         
-    sem_log_name = f"semantico-johegvel-{datetime_str}.txt"
+    sem_log_name = f"semantico-{dev_username}-{datetime_str}.txt"
     sem_log_path = os.path.join(logs_dir, sem_log_name)
     
     with open(sem_log_path, 'w', encoding='utf-8') as f:
         f.write("==================================================\n")
         f.write("         LOG DE ANÁLISIS SEMÁNTICO (DART)\n")
         f.write("==================================================\n")
-        f.write(f"Desarrollador: Johan Veloz (johegvel)\n")
+        f.write(f"Desarrollador: {dev_fullname} ({dev_username})\n")
         f.write(f"Fecha y Hora:  {now.strftime('%d/%m/%Y %H:%M:%S')}\n")
         f.write(f"Archivo Origen: {algorithm_name}\n")
         f.write("--------------------------------------------------\n")
@@ -144,19 +148,19 @@ def main():
     tests_dir = os.path.join(root_dir, "tests")
     
     algorithms = [
-        ("algoritmo1.dart", "Algoritmo 1 - Búsqueda y Ordenamiento"),
-        ("algoritmo2.dart", "Algoritmo 2 - Gestión de Inventario"),
-        ("algoritmo3.dart", "Algoritmo 3 - Análisis de Texto"),
+        ("algoritmo1.dart", "Algoritmo 1 - Búsqueda y Ordenamiento", "Xavih830", "Xavier Camacho", "28-06-2026-20-13"),
+        ("algoritmo2.dart", "Algoritmo 2 - Gestión de Inventario", "ManuelMatute", "Manuel Matute", "28-06-2026-20-14"),
+        ("algoritmo3.dart", "Algoritmo 3 - Análisis de Texto", "johegvel", "Johan Veloz", "28-06-2026-20-15"),
     ]
     
     print("Iniciando validación de los algoritmos de prueba de Dart...")
     print("=" * 50)
     
-    for filename, desc in algorithms:
+    for filename, desc, username, fullname, time_override in algorithms:
         path = os.path.join(tests_dir, filename)
         if os.path.exists(path):
-            print(f"Analizando {desc} ({filename})...")
-            generate_logs(path, filename)
+            print(f"Analizando {desc} ({filename}) para {fullname}...")
+            generate_logs(path, filename, username, fullname, datetime_str=time_override)
         else:
             print(f"⚠ Archivo no encontrado: {path}")
 

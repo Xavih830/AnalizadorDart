@@ -1,0 +1,17 @@
+# Registro de Actualizaciones (Updates) - Analizador Dart
+
+Este documento detalla el historial de actualizaciones y la división de trabajo colaborativo para el desarrollo del analizador léxico, sintáctico y semántico del lenguaje Dart utilizando PLY en Python.
+
+| Fecha | Autor | Fase / Componente | Síntesis del Desarrollo |
+| :--- | :--- | :--- | :--- |
+| **20-06-2026** | Xavier Camacho (`Xavih830`) | Fase 1: Configuración | Inicialización del repositorio. Configuración inicial del entorno, creación del archivo `.gitignore` para excluir carpetas de compilación de Python y el directorio `/docs/`, y especificación de dependencias en `requirements.txt`. |
+| **21-06-2026** | Xavier Camacho (`Xavih830`) | Fase 2: Lexer & AST | Implementación de la estructura base del Árbol de Sintaxis Abstracta (AST) en `ast_nodes.py`. Definición inicial de los patrones para identificadores estándar, privados y SCREAMING_SNAKE en `lexer.py`. |
+| **22-06-2026** | Johan Veloz (`johegvel`) | Fase 2: Lexer | Adición de delimitadores, números enteros, decimales y operadores especiales en `lexer.py`. Implementación del descarte y conteo de líneas para comentarios de una línea, multilínea y de documentación. |
+| **23-06-2026** | Manuel Matute (`ManuelMatute`) | Fase 2: Lexer | Adición de tokens para operadores aritméticos, relacionales, lógicos y de asignación (simple, compuesta y condicional) en `lexer.py`. Implementación del soporte para cadenas de texto de comillas simples y dobles. |
+| **24-06-2026** | Xavier Camacho (`Xavih830`) | Fase 2: Parser | Creación de `parser.py` e implementación de reglas sintácticas para declaraciones de variables usando inferencia de tipo (`var`), estructuras condicionales `if/else/else if`, colecciones `List` y declaraciones de funciones clásicas. |
+| **25-06-2026** | Manuel Matute (`ManuelMatute`) | Fase 2: Parser | Desarrollo de reglas gramaticales para declaraciones con tipo explícito, expresiones aritméticas y booleanas con precedencia estándar, estructuras repetitivas `for` y `for-in`, colecciones `Map` y funciones con parámetros nombrados. |
+| **26-06-2026** | Johan Veloz (`johegvel`) | Fase 2: Parser | Desarrollo de reglas gramaticales para constantes con `final` y `const`, bucles de control `while` y `do-while`, colecciones de tipo `Set` y soporte para funciones flecha/lambda (`=>`). |
+| **27-06-2026** | Xavier, Manuel y Johan | Fase 2: Parser (Debug) | Refactorización de las reglas de producción para resolver conflictos LALR(1) (shift/reduce y reduce/reduce) mediante inlining de tipos. Corrección del error de recuperación sintáctica en `p_error` y asignación de `lexer.parser`. |
+| **28-06-2026** | Xavier, Manuel y Johan | Fase 2, 3 y 4: Integración | Implementación del Analizador Semántico (`semantic.py`) con las 6 reglas semánticas básicas (SE-01 a SE-06). Desarrollo de la interfaz gráfica de usuario en PyQt6 (`gui.py`) y del script de validación automatizada (`run_validation.py`). |
+| **06-07-2026** | Xavier, Manuel y Johan | Fase 4: Validación y Logs | Reestructuración de los logs de validación para alinearlos con el diseño y asignación del plan de trabajo (1 log léxico, sintáctico y semántico por integrante para su respectivo algoritmo). Refactorización de `run_validation.py` para automatizar este proceso. |
+
