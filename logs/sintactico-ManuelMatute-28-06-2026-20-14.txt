@@ -1,0 +1,44 @@
+==================================================
+        LOG DE ANÁLISIS SINTÁCTICO (DART)
+==================================================
+Desarrollador: Manuel Matute (ManuelMatute)
+Fecha y Hora:  28/06/2026 20:14:00
+Archivo Origen: algoritmo2.dart
+--------------------------------------------------
+Errores sintácticos: 30
+--------------------------------------------------
+
+[ERROR] ERROR: No se pudo generar el AST debido a fallas en el análisis sintáctico.
+
+
+--- DETALLE DE ERRORES SINTÁCTICOS ---
+- Linea 25: ERROR_SINTACTICO: token inesperado '}' en la linea 25 (Lexema: '}')
+- Linea 25: ERROR_SINTACTICO: token inesperado ';' en la linea 25 (Lexema: ';')
+- Linea 26: ERROR_SINTACTICO: token inesperado ';' en la linea 26 (Lexema: ';')
+- Linea 27: ERROR_SINTACTICO: token inesperado 'stdout' en la linea 27 (Lexema: 'stdout')
+- Linea 27: ERROR_SINTACTICO: token inesperado ';' en la linea 27 (Lexema: ';')
+- Linea 28: ERROR_SINTACTICO: token inesperado 'String' en la linea 28 (Lexema: 'String')
+- Linea 28: ERROR_SINTACTICO: token inesperado 'cod' en la linea 28 (Lexema: 'cod')
+- Linea 28: ERROR_SINTACTICO: token inesperado '=' en la linea 28 (Lexema: '=')
+- Linea 28: ERROR_SINTACTICO: token inesperado 'stdin' en la linea 28 (Lexema: 'stdin')
+- Linea 28: ERROR_SINTACTICO: token inesperado ';' en la linea 28 (Lexema: ';')
+- Linea 29: ERROR_SINTACTICO: token inesperado 'if' en la linea 29 (Lexema: 'if')
+- Linea 29: ERROR_SINTACTICO: token inesperado '{' en la linea 29 (Lexema: '{')
+- Linea 30: ERROR_SINTACTICO: token inesperado 'stdout' en la linea 30 (Lexema: 'stdout')
+- Linea 30: ERROR_SINTACTICO: token inesperado ';' en la linea 30 (Lexema: ';')
+- Linea 31: ERROR_SINTACTICO: token inesperado 'inventario' en la linea 31 (Lexema: 'inventario')
+- Linea 31: ERROR_SINTACTICO: token inesperado '=' en la linea 31 (Lexema: '=')
+- Linea 31: ERROR_SINTACTICO: token inesperado 'int' en la linea 31 (Lexema: 'int')
+- Linea 31: ERROR_SINTACTICO: token inesperado ';' en la linea 31 (Lexema: ';')
+- Linea 32: ERROR_SINTACTICO: token inesperado 'print' en la linea 32 (Lexema: 'print')
+- Linea 32: ERROR_SINTACTICO: token inesperado ';' en la linea 32 (Lexema: ';')
+- Linea 33: ERROR_SINTACTICO: token inesperado '}' en la linea 33 (Lexema: '}')
+- Linea 33: ERROR_SINTACTICO: token inesperado 'else' en la linea 33 (Lexema: 'else')
+- Linea 33: ERROR_SINTACTICO: token inesperado '{' en la linea 33 (Lexema: '{')
+- Linea 33: ERROR_SINTACTICO: token inesperado 'print' en la linea 33 (Lexema: 'print')
+- Linea 33: ERROR_SINTACTICO: token inesperado ';' en la linea 33 (Lexema: ';')
+- Linea 33: ERROR_SINTACTICO: token inesperado '}' en la linea 33 (Lexema: '}')
+- Linea 34: ERROR_SINTACTICO: token inesperado 'mostrarInventario' en la linea 34 (Lexema: 'mostrarInventario')
+- Linea 34: ERROR_SINTACTICO: token inesperado ';' en la linea 34 (Lexema: ';')
+- Linea 35: ERROR_SINTACTICO: token inesperado '}' en la linea 35 (Lexema: '}')
+- Linea 0: ERROR_SINTACTICO: fin de archivo inesperado (EOF) (Lexema: 'EOF')
