@@ -1,0 +1,23 @@
+ANALISIS SINTACTICO - DART CON PLY
+==================================================
+
+Archivo analizado: pruebas/algoritmo2_manuel.dart
+Desarrollador: ManuelMatute
+Fecha y hora: 28-06-2026-20h08
+
+RESULTADO DEL ANALISIS
+--------------------------------------------------
+Analisis sintactico exitoso.
+El archivo respeta las reglas gramaticales definidas para este avance.
+
+ERRORES LEXICOS DETECTADOS DURANTE EL ANALISIS
+--------------------------------------------------
+No se encontraron errores lexicos.
+
+ERRORES SINTACTICOS
+--------------------------------------------------
+No se encontraron errores sintacticos.
+
+ARBOL / RESULTADO INTERNO DEL PARSER
+--------------------------------------------------
+('program', [('import', "'dart:io'"), ('class', 'Producto', [('field_declaration', ('type', 'String'), 'nombre'), ('field_declaration', ('type', 'int'), 'cantidad'), ('field_declaration', ('type', 'double'), 'precio'), ('constructor', 'Producto', [('param', [('named_params', [('param', [('type', 'void'), 'nombre']), ('param', [('type', 'void'), 'cantidad']), ('param', [('type', 'void'), 'precio'])])])]), ('getter', ('type', 'double'), 'valorTotal', ('binary', '*', ('primary', 'cantidad'), ('primary', 'precio'))), ('method', ('type', 'String'), 'toString', [], '=>')]), ('function', ('type', 'void'), 'mostrarInventario', [('param', [('collection_type', 'Map', [('type', 'String'), ('type', 'Producto')]), 'inv'])], ('block', [('call_stmt', ('function_call', 'print', [('arg', ('primary', "'\\n=== INVENTARIO ==='"))])), ('for', ('for_in', ('for_each_decl', 'var', 'e'), ('member', '.', ('primary', 'inv'), 'entries')), ('call_stmt', ('function_call', 'print', [('arg', ('primary', "'  [${e.key}] ${e.value}'"))]))), ('typed_declaration', ('type', 'double'), [('declarator_assign', 'total', ('method_call', ('member', '.', ('primary', 'inv'), 'values'), 'fold', [('arg', ('primary', '0.0')), ('arg', ('function', ('type', 'void'), 'anonymous', [('param', [('type', 'void'), 's']), ('param', [('type', 'void'), 'p'])], ('binary', '+', ('primary', 's'), ('member', '.', ('primary', 'p'), 'valorTotal'))))]))]), ('call_stmt', ('function_call', 'print', [('arg', ('primary', "'Valor total: \\$$total'"))]))])), ('function', ('type', 'void'), 'main', [], ('block', [('typed_declaration', ('collection_type', 'Map', [('type', 'String'), ('type', 'Producto')]), [('declarator_assign', 'inventario', ('collection_literal', [('map_item', ('primary', "'P001'"), ('function_call', 'Producto', [('arg', ('named_arg', 'nombre', ('primary', "'Laptop'"))), ('arg', ('named_arg', 'cantidad', ('primary', '5'))), ('arg', ('named_arg', 'precio', ('primary', '899.99')))])), ('map_item', ('primary', "'P002'"), ('function_call', 'Producto', [('arg', ('named_arg', 'nombre', ('primary', "'Mouse'"))), ('arg', ('named_arg', 'cantidad', ('primary', '20'))), ('arg', ('named_arg', 'precio', ('primary', '25.5')))])), ('map_item', ('primary', "'P003'"), ('function_call', 'Producto', [('arg', ('named_arg', 'nombre', ('primary', "'Teclado'"))), ('arg', ('named_arg', 'cantidad', ('primary', '15'))), ('arg', ('named_arg', 'precio', ('primary', '45.0')))]))]))]), ('call_stmt', ('function_call', 'mostrarInventario', [('arg', ('primary', 'inventario'))])), ('call_stmt', ('method_call', ('primary', 'stdout'), 'write', [('arg', ('primary', "'Codigo a actualizar: '"))])), ('typed_declaration', ('type', 'String'), [('declarator_assign', 'cod', ('postfix', '!', ('method_call', ('primary', 'stdin'), 'readLineSync', [])))]), ('if_else', ('method_call', ('primary', 'inventario'), 'containsKey', [('arg', ('primary', 'cod'))]), ('block', [('call_stmt', ('method_call', ('primary', 'stdout'), 'write', [('arg', ('primary', "'Nueva cantidad: '"))])), ('assignment', ('member', '!.', ('index', ('primary', 'inventario'), ('primary', 'cod')), 'cantidad'), '=', ('static_call', ('type', 'int'), 'parse', [('arg', ('postfix', '!', ('method_call', ('primary', 'stdin'), 'readLineSync', [])))])), ('call_stmt', ('function_call', 'print', [('arg', ('primary', "'Actualizado.'"))]))]), ('block', [('call_stmt', ('function_call', 'print', [('arg', ('primary', "'No encontrado.'"))]))])), ('call_stmt', ('function_call', 'mostrarInventario', [('arg', ('primary', 'inventario'))]))]))])

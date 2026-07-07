@@ -1,0 +1,14 @@
+ANALISIS SEMANTICO - DART CON PLY
+==================================================
+
+Archivo analizado: pruebas/algoritmo1_xavier.dart
+Desarrollador: XavierCamacho
+Fecha y hora: 28-06-2026-20h30
+
+RESULTADO DEL ANALISIS
+--------------------------------------------------
+Analisis semantico finalizado con errores.
+
+ERRORES SEMANTICOS DETECTADOS
+--------------------------------------------------
+ERROR_TIPO: no se puede asignar 'List<dynamic>' a la variable 'numeros' de tipo 'List<int>' (linea 29)

@@ -217,5 +217,8 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Project documentation (ignore as requested)
-docs/
+# Project documentation
+docs/*
+!docs/Updates.md
+docs/logs_ejemplo/
+docs/**/~$*

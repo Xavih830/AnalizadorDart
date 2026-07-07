@@ -1,0 +1,15 @@
+ANALISIS SEMANTICO - DART CON PLY
+==================================================
+
+Archivo analizado: pruebas/algoritmo2_manuel.dart
+Desarrollador: ManuelMatute
+Fecha y hora: 28-06-2026-20h30
+
+RESULTADO DEL ANALISIS
+--------------------------------------------------
+Analisis semantico finalizado con errores.
+
+ERRORES SEMANTICOS DETECTADOS
+--------------------------------------------------
+ERROR_TIPO: no se puede asignar 'Map<dynamic, dynamic>' a la variable 'inventario' de tipo 'Map<String, Producto>' (linea 21)
+ERROR_TIPO: no se puede asignar 'bool' a la variable 'cod' de tipo 'String' (linea 28)

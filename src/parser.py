@@ -661,8 +661,10 @@ def p_expression_literal(p):
 # Colección: List Literal
 def p_expression_list_literal(p):
     '''expression : LBRACKET expression_list RBRACKET
-                  | LT type GT LBRACKET expression_list RBRACKET'''
-    if len(p) == 4:
+                  | LBRACKET expression_list COMA RBRACKET
+                  | LT type GT LBRACKET expression_list RBRACKET
+                  | LT type GT LBRACKET expression_list COMA RBRACKET'''
+    if len(p) in (4, 5):
         p[0] = ListLiteral(p[2], line=p.lineno(1))
     else:
         p[0] = ListLiteral(p[5], type_param=p[2], line=p.lineno(4))
@@ -671,12 +673,16 @@ def p_expression_list_literal(p):
 def p_expression_map_or_set_literal(p):
     '''expression : LBRACE RBRACE
                   | LBRACE key_value_list_not_empty RBRACE
+                  | LBRACE key_value_list_not_empty COMA RBRACE
                   | LBRACE expression_list_not_empty RBRACE
+                  | LBRACE expression_list_not_empty COMA RBRACE
                   | LT type_list GT LBRACE RBRACE
                   | LT type_list GT LBRACE key_value_list_not_empty RBRACE
-                  | LT type_list GT LBRACE expression_list_not_empty RBRACE'''
-    if len(p) == 4:
-        if p[2] == '}':
+                  | LT type_list GT LBRACE key_value_list_not_empty COMA RBRACE
+                  | LT type_list GT LBRACE expression_list_not_empty RBRACE
+                  | LT type_list GT LBRACE expression_list_not_empty COMA RBRACE'''
+    if len(p) in (3, 4, 5):
+        if len(p) == 3:
             p[0] = MapLiteral([], line=p.lineno(1))
         else:
             entries = p[2]
@@ -686,7 +692,7 @@ def p_expression_map_or_set_literal(p):
                 p[0] = SetLiteral(entries, line=p.lineno(1))
     else:
         types = p[2].split(",")
-        entries = p[5]
+        entries = p[5] if len(p) in (7, 8) else []
         if len(types) >= 2:
             p[0] = MapLiteral(entries or [], key_type=types[0].strip(), value_type=types[1].strip(), line=p.lineno(4))
         else:
@@ -801,7 +807,7 @@ def p_empty(p):
 def p_error(p):
     global _current_parser_errors
     if p:
-        error_msg = f"ERROR_SINTACTICO: token inesperado '{p.value}' en la linea {p.lineno}"
+        error_msg = f"ERROR_SINTACTICO: token inesperado '{p.value}' de tipo {p.type} en la linea {p.lineno}"
         err = {
             'phase': 'Sintáctico',
             'category': 'ERROR_SINTACTICO',

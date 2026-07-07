@@ -1,0 +1,22 @@
+ANALISIS SINTACTICO - DART CON PLY
+==================================================
+
+Archivo analizado: pruebas/algoritmo3_johan.dart
+Desarrollador: JohanVeloz
+Fecha y hora: 28-06-2026-20h08
+
+RESULTADO DEL ANALISIS
+--------------------------------------------------
+Analisis sintactico finalizado con errores.
+
+ERRORES LEXICOS DETECTADOS DURANTE EL ANALISIS
+--------------------------------------------------
+No se encontraron errores lexicos.
+
+ERRORES SINTACTICOS
+--------------------------------------------------
+ERROR_SINTACTICO: token inesperado ''\s+'' de tipo CADENA en la linea 4
+ERROR_SINTACTICO: token inesperado ''[^a-z]'' de tipo CADENA en la linea 10
+ARBOL / RESULTADO INTERNO DEL PARSER
+--------------------------------------------------
+('program', [('import', "'dart:io'"), ('function', ('collection_type', 'Set', [('type', 'String')]), 'palabrasUnicas', [('param', [('type', 'String'), 'texto'])], ('method_call', ('method_call', ('method_call', ('method_call', ('primary', 'texto'), 'toLowerCase', []), 'split', [('arg', ('function_call', 'RegExp', [('arg', ('primary', 'r'))]))]), 'where', [('arg', ('function', ('type', 'void'), 'anonymous', [('param', [('type', 'void'), 'p'])], ('member', '.', ('primary', 'p'), 'isNotEmpty')))]), 'toSet', [])), ('function', ('type', 'int'), 'contarVocales', [('param', [('type', 'String'), 'texto'])], ('member', '.', ('method_call', ('method_call', ('method_call', ('primary', 'texto'), 'toLowerCase', []), 'split', [('arg', ('primary', "''"))]), 'where', [('arg', ('function', ('type', 'void'), 'anonymous', [('param', [('type', 'void'), 'c'])], ('method_call', ('primary', "'aeiou'"), 'contains', [('arg', ('primary', 'c'))])))]), 'length')), ('function', ('type', 'bool'), 'esPalindromo', [('param', [('type', 'String'), 'texto'])], ('block', [('final_const_declaration', 'final', None, [('declarator_assign', 's', ('method_call', ('method_call', ('primary', 'texto'), 'toLowerCase', []), 'replaceAll', [('arg', ('function_call', 'RegExp', [('arg', ('primary', 'r'))])), ('arg', ('primary', "''"))]))]), ('return', ('method_call', ('member', '.', ('function_call', '(s == s.split)', [('arg', ('primary', "''"))]), 'reversed'), 'join', []))])), ('function', ('type', 'void'), 'main', [], ('block', [('call_stmt', ('method_call', ('primary', 'stdout'), 'write', [('arg', ('primary', "'Ingrese un texto: '"))])), ('typed_declaration', ('type', 'String'), [('declarator_assign', 'texto', ('binary', '??', ('method_call', ('primary', 'stdin'), 'readLineSync', []), ('primary', "''")))]), ('typed_declaration', ('collection_type', 'Set', [('type', 'String')]), [('declarator_assign', 'unicas', ('function_call', 'palabrasUnicas', [('arg', ('primary', 'texto'))]))]), ('typed_declaration', ('type', 'int'), [('declarator_assign', 'vocales', ('function_call', 'contarVocales', [('arg', ('primary', 'texto'))]))]), ('typed_declaration', ('type', 'bool'), [('declarator_assign', 'palind', ('function_call', 'esPalindromo', [('arg', ('method_call', ('primary', 'texto'), 'replaceAll', [('arg', ('primary', "' '")), ('arg', ('primary', "''"))]))]))]), ('call_stmt', ('function_call', 'print', [('arg', ('primary', "'Palabras unicas (${unicas.length}): $unicas'"))])), ('call_stmt', ('function_call', 'print', [('arg', ('primary', "'Vocales: $vocales'"))])), ('call_stmt', ('function_call', 'print', [('arg', ('primary', "'Es palindromo: $palind'"))])), ('typed_declaration', ('collection_type', 'Set', [('type', 'String')]), [('declarator_assign', 'vocalesSet', ('collection_literal', [('set_item', ('primary', "'a'")), ('set_item', ('primary', "'e'")), ('set_item', ('primary', "'i'")), ('set_item', ('primary', "'o'")), ('set_item', ('primary', "'u'"))]))]), ('typed_declaration', ('collection_type', 'Set', [('type', 'String')]), [('declarator_assign', 'letras', ('method_call', ('method_call', ('method_call', ('primary', 'texto'), 'toLowerCase', []), 'split', [('arg', ('primary', "''"))]), 'toSet', []))]), ('typed_declaration', ('collection_type', 'Set', [('type', 'String')]), [('declarator_assign', 'vocalesEnTxt', ('method_call', ('primary', 'letras'), 'intersection', [('arg', ('primary', 'vocalesSet'))]))]), ('call_stmt', ('function_call', 'print', [('arg', ('primary', "'Vocales presentes: $vocalesEnTxt'"))]))]))])
