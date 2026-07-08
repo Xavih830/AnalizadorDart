@@ -206,9 +206,6 @@ class SemanticAnalyzer:
         # Regla SE-02 en asignaciones
         if node.op in ['=', '+=', '-=', '*=', '/=', '~/=', '%=', '??=']:
             if isinstance(node.left, Identifier):
-                # Verificar asignación a variables no declaradas
-                self.visit(node.left) 
-                
                 # Para asignación directa, verificar compatibilidad de tipo
                 if node.op == '=' and left_type != 'dynamic' and right_type != 'dynamic':
                     if not self.is_compatible(right_type, left_type):
