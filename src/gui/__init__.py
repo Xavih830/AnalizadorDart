@@ -217,13 +217,31 @@ QStatusBar {
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Analizador de Dart - Compiladores")
+        self.setWindowTitle("Analizador de Dart - Argentina")
         self.resize(1100, 750)
         self.setStyleSheet(DARK_STYLESHEET)
+        
+        # Configurar icono de la aplicación
+        self.setup_icon()
         
         # Inicializar componentes principales
         self.setup_ui()
         self.setup_statusbar()
+
+    def setup_icon(self):
+        # Resolver ruta del logo en el directorio src/
+        _src_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        logo_path = os.path.join(_src_dir, "logo.png")
+        if os.path.exists(logo_path):
+            self.setWindowIcon(QIcon(logo_path))
+            
+        # Integración con la barra de tareas de Windows
+        if sys.platform == 'win32':
+            import ctypes
+            try:
+                ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("analizadordart.argentina.gui.1")
+            except Exception:
+                pass
         
     def setup_ui(self):
         # Widget central y layout horizontal principal

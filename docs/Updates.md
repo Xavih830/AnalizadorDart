@@ -17,4 +17,5 @@ Este documento detalla el historial de actualizaciones y la división de trabajo
 | **08-07-2026** | Xavier, Manuel y Johan | Fase 4: Robustez y GUI | Corrección del direccionamiento de importaciones en `gui.py` y reestructuración en paquete `src/gui/` con shims de compatibilidad (`py.py` y `__main__.py`) para soportar invocaciones autónomas de todo tipo, incluyendo la errónea `python -m gui.py`. |
 | **08-07-2026** | Xavier, Manuel y Johan | Fase 4: Analizador Semántico (Debug) | Corrección de un error en `visit_BinaryOp` dentro de `semantic.py` que causaba la duplicación de reportes de variables no declaradas al lado izquierdo de una asignación. |
 | **08-07-2026** | Xavier, Manuel y Johan | Fase 4: GUI (Premium UX) | Integración de un componente personalizado de numeración de líneas en el editor de código de la interfaz gráfica (`src/gui/__init__.py`) y realce visual de la línea actual. |
+| **08-07-2026** | Xavier, Manuel y Johan | Fase 4: GUI (Premium UX) | Integración del logotipo oficial de Dart en la ventana de la interfaz gráfica y en la barra de tareas de Windows (`src/logo.png`), y actualización del título de la ventana. |
 
