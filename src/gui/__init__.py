@@ -31,6 +31,12 @@ from src.lexer import get_lexer
 from src.parser import parse
 from src.semantic import SemanticAnalyzer
 
+def get_monospace_font(size):
+    font = QFont()
+    font.setFamilies(["JetBrains Mono", "Fira Code", "Cascadia Code", "Source Code Pro", "Consolas", "Courier New"])
+    font.setPointSize(size)
+    return font
+
 # --- Área e Implementación de Números de Línea en PyQt6 ---
 
 class LineNumberArea(QWidget):
@@ -86,6 +92,7 @@ class CodeEditor(QPlainTextEdit):
 
     def lineNumberAreaPaintEvent(self, event):
         painter = QPainter(self.lineNumberArea)
+        painter.setFont(self.font())
         
         # Color de fondo del área de números (gris oscuro muy elegante)
         painter.fillRect(event.rect(), QColor("#1e1e1e"))
@@ -264,7 +271,7 @@ class MainWindow(QMainWindow):
         left_layout.addWidget(lbl_code)
         
         self.code_editor = CodeEditor()
-        self.code_editor.setFont(QFont("Consolas", 11))
+        self.code_editor.setFont(get_monospace_font(11))
         # Autotab / tab size
         self.code_editor.setTabStopDistance(self.fontMetrics().horizontalAdvance(' ') * 16)
         left_layout.addWidget(self.code_editor)
@@ -316,7 +323,7 @@ class MainWindow(QMainWindow):
         tab_sin_layout = QVBoxLayout(self.tab_sin)
         self.txt_ast = QTextEdit()
         self.txt_ast.setReadOnly(True)
-        self.txt_ast.setFont(QFont("Consolas", 10))
+        self.txt_ast.setFont(get_monospace_font(10))
         tab_sin_layout.addWidget(self.txt_ast)
         self.tabs.addTab(self.tab_sin, "Sintáctico (AST)")
         
@@ -334,7 +341,7 @@ class MainWindow(QMainWindow):
         tab_report_layout = QVBoxLayout(self.tab_report)
         self.txt_report = QTextEdit()
         self.txt_report.setReadOnly(True)
-        self.txt_report.setFont(QFont("Consolas", 9))
+        self.txt_report.setFont(get_monospace_font(9))
         tab_report_layout.addWidget(self.txt_report)
         
         self.btn_save_log = QPushButton("Guardar Log de Salida")
