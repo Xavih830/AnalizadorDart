@@ -343,9 +343,25 @@ class SemanticAnalyzer:
         return node.literal_type
 
     def visit_ListLiteral(self, node):
+        elem_types = set()
         for elem in node.elements:
-            self.visit(elem)
-        return f"List<{node.type_param or 'dynamic'}>"
+            elem_types.add(self.visit(elem))
+
+        if node.type_param:
+            inferred = node.type_param
+        elif not elem_types:
+            # Lista vacia: sin elementos para inferir, se mantiene laxo (List<dynamic>)
+            inferred = 'dynamic'
+        elif len(elem_types) == 1:
+            inferred = elem_types.pop()
+        elif elem_types <= {'int', 'double', 'num'}:
+            inferred = 'num'
+        else:
+            # Elementos de tipos realmente heterogeneos y sin relacion (ej. int y String):
+            # se marca como 'mixed' (no 'dynamic') para que is_compatible NO lo trate
+            # como comodin y SI reporte el error SE-02 contra el tipo declarado.
+            inferred = 'mixed'
+        return f"List<{inferred}>"
 
     def visit_MapLiteral(self, node):
         for k, v in node.key_values:
