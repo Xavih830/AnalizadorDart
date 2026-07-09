@@ -156,6 +156,10 @@ QPlainTextEdit, QTextEdit {
     color: #dcdcdc;
     border: 1px solid #333333;
     border-radius: 4px;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Source Code Pro', 'Consolas', 'Courier New', monospace;
+}
+QTextEdit#txt_semantic {
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 QTabWidget::pane {
     border: 1px solid #333333;
@@ -331,6 +335,7 @@ class MainWindow(QMainWindow):
         self.tab_sem = QWidget()
         tab_sem_layout = QVBoxLayout(self.tab_sem)
         self.txt_semantic = QTextEdit()
+        self.txt_semantic.setObjectName("txt_semantic")
         self.txt_semantic.setReadOnly(True)
         self.txt_semantic.setFont(QFont("Segoe UI", 10))
         tab_sem_layout.addWidget(self.txt_semantic)
