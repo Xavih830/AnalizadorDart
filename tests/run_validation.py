@@ -375,7 +375,8 @@ def generate_logs(algorithm_path, dev_username, print_alg_name):
     # ----------------------------------------------------
     # 2. Análisis Sintáctico (20h08)
     # ----------------------------------------------------
-    ast, syntactic_errors = parse(code)
+    ast, all_errors = parse(code)
+    syntactic_errors = [err for err in all_errors if err.get('phase') == 'Sintáctico']
 
     sin_log_name = f"sintactico-{dev_username}-28-06-2026-20h08.txt"
     sin_log_path = os.path.join(logs_dir, sin_log_name)

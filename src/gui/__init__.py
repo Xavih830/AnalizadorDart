@@ -403,7 +403,8 @@ class MainWindow(QMainWindow):
             self.table_tokens.setItem(row, 3, QTableWidgetItem(str(tok.lexpos)))
  
         # 2. Análisis Sintáctico (Genera AST y captura errores)
-        ast, syntactic_errors = parse(code)
+        ast, all_errors = parse(code)
+        syntactic_errors = [err for err in all_errors if err.get('phase') == 'Sintáctico']
         lex_errors = lexer.errors
         
         # 3. Análisis Semántico (solo si el AST es válido)
