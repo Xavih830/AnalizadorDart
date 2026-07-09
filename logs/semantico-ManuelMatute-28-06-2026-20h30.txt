@@ -11,5 +11,4 @@ Analisis semantico finalizado con errores.
 
 ERRORES SEMANTICOS DETECTADOS
 --------------------------------------------------
-ERROR_TIPO: no se puede asignar 'Map<dynamic, dynamic>' a la variable 'inventario' de tipo 'Map<String, Producto>' (linea 21)
 ERROR_TIPO: no se puede asignar 'bool' a la variable 'cod' de tipo 'String' (linea 28)

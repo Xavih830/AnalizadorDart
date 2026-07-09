@@ -19,4 +19,5 @@ Este documento detalla el historial de actualizaciones y la división de trabajo
 | **08-07-2026** | Xavier, Manuel y Johan | Fase 4: GUI (Premium UX) | Integración de un componente personalizado de numeración de líneas en el editor de código de la interfaz gráfica (`src/gui/__init__.py`) y realce visual de la línea actual. |
 | **08-07-2026** | Xavier, Manuel y Johan | Fase 4: GUI (Premium UX) | Integración del logotipo oficial de Dart en la ventana de la interfaz gráfica y en la barra de tareas de Windows (`src/logo.png`), y actualización del título de la ventana. |
 | **08-07-2026** | Xavier, Manuel y Johan | Fase 4: Reporte de Errores (Debug) | Corrección de la duplicación en el conteo y visualización de errores léxicos y sintácticos en la interfaz y en el script de validación, filtrando la salida de `parse()` por fase (`Sintáctico`). |
+| **08-07-2026** | Xavier, Manuel y Johan | Fase 4: Analizador Semántico (Debug) | Resolución de falsos positivos al asignar colecciones genéricas (`List`, `Map`, `Set`) al permitir la compatibilidad en `is_compatible` si alguna de ellas contiene parámetros de tipo `dynamic`. |
 

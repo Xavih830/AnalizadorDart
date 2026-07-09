@@ -12,4 +12,3 @@ Analisis semantico finalizado con errores.
 ERRORES SEMANTICOS DETECTADOS
 --------------------------------------------------
 ERROR_IDENTIFICADOR: la variable 'r' no ha sido declarada en el ambito actual (linea 10)
-ERROR_TIPO: no se puede asignar 'Set<dynamic>' a la variable 'vocalesSet' de tipo 'Set<String>' (linea 23)

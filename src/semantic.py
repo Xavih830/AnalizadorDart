@@ -111,6 +111,13 @@ class SemanticAnalyzer:
         if t_decl_clean == t_val_clean:
             return True
 
+        # Permitir asignación de colecciones genéricas si una de ellas contiene 'dynamic' (ej. List<dynamic> a List<int>)
+        if (t_decl_clean.startswith('List') and t_val_clean.startswith('List')) or \
+           (t_decl_clean.startswith('Map') and t_val_clean.startswith('Map')) or \
+           (t_decl_clean.startswith('Set') and t_val_clean.startswith('Set')):
+            if 'dynamic' in t_decl_clean or 'dynamic' in t_val_clean:
+                return True
+
         # Jerarquía Numérica en Dart (int y double heredan de num)
         if t_val_clean in ['int', 'double'] and t_decl_clean == 'num':
             return True

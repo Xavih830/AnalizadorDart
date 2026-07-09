@@ -7,8 +7,9 @@ Fecha y hora: 28-06-2026-20h30
 
 RESULTADO DEL ANALISIS
 --------------------------------------------------
-Analisis semantico finalizado con errores.
+Analisis semantico exitoso.
+El archivo respeta las reglas semanticas definidas.
 
 ERRORES SEMANTICOS DETECTADOS
 --------------------------------------------------
-ERROR_TIPO: no se puede asignar 'List<dynamic>' a la variable 'numeros' de tipo 'List<int>' (linea 29)
+No se encontraron errores semanticos.
