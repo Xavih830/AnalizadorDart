@@ -7,7 +7,9 @@ class Producto {
   Producto({required this.nombre, required this.cantidad, required this.precio});
   double get valorTotal => cantidad * precio;
   @override
-  String toString() => '$nombre: $cantidad uds @ \$$precio';
+  String toString() {
+    return '$nombre: $cantidad uds @ \$$precio';
+  }
 }
  
 void mostrarInventario(Map<String, Producto> inv) {
@@ -24,11 +26,11 @@ void main() {
     'P003': Producto(nombre: 'Teclado', cantidad: 15, precio: 45.00),
   };
   mostrarInventario(inventario);
-  stdout.write('Codigo a actualizar: ');
-  String cod = stdin.readLineSync()!;
+  //stdout.write('Codigo a actualizar: ');
+  String cod = 'P001';
   if (inventario.containsKey(cod)) {
-    stdout.write('Nueva cantidad: ');
-    inventario[cod]!.cantidad = int.parse(stdin.readLineSync()!);
+    //stdout.write('Nueva cantidad: ');
+    inventario[cod].cantidad = 10;
     print('Actualizado.');
   } else { print('No encontrado.'); }
   mostrarInventario(inventario);

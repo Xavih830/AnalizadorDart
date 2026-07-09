@@ -461,11 +461,11 @@ def p_field_declaration(p):
 def p_constructor_declaration(p):
     '''constructor_declaration : ID LPAREN parameter_list RPAREN block
                                | ID LPAREN parameter_list RPAREN SEMICOLON'''
-    if len(p) == 6:
-        p[0] = ConstructorDeclaration(p[1], p[3], body=p[5], line=p.lineno(1))
-    else:
+    if p[5] == ';':
         p[0] = ConstructorDeclaration(p[1], p[3], body=None, line=p.lineno(1))
-
+    else:
+        p[0] = ConstructorDeclaration(p[1], p[3], body=p[5], line=p.lineno(1))
+        
 def p_getter_declaration(p):
     '''getter_declaration : ID GET ID ARROW expression SEMICOLON
                           | ID LT type_list GT GET ID ARROW expression SEMICOLON
